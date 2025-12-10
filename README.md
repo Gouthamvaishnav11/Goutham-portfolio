@@ -88,4 +88,6 @@ cd Goutham-portfolio
 npm install
 ``
 npm run dev
+```
+link:gouthamvaishnav.netlify.app/ 
 
