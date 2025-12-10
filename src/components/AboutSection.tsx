@@ -88,13 +88,13 @@ const AboutSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Hi! I'm <span className="neon-text">Goutham Vaishnav</span>
+              Hi there! <span className="inline-block animate-wave">👋</span> I'm <span className="neon-text">Goutham Vaishnav</span>
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              I build robust APIs, automate workflows with AI agents, and deploy scalable cloud solutions. 
-              My passion lies in creating intelligent systems that bridge the gap between complex technology 
-              and seamless user experiences.
+              I'm from <span className="text-primary font-semibold">Hyderabad, India</span>. I build secure backend systems 
+              with <span className="text-secondary">Flask & SQLAlchemy</span>, intelligent AI automations, and scalable 
+              cloud workflows. My passion lies in creating systems that think, adapt, and scale.
             </p>
 
             {/* Terminal-style info box */}

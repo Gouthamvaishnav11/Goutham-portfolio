@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import ParticleField from '@/components/ParticleField';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
 import SummarySection from '@/components/SummarySection';
 import LocationSection from '@/components/LocationSection';
@@ -20,6 +21,7 @@ const Index = () => {
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
+        <ProjectsSection />
         <SkillsSection />
         <SummarySection />
         <LocationSection />
