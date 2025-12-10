@@ -3,8 +3,27 @@ import { MapPin, Globe2 } from 'lucide-react';
 
 const LocationSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
 
+  // ---- Dynamic time updater ----
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
+      setCurrentTime(timeString);
+    };
+
+    updateClock();
+    const timer = setInterval(updateClock, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // ---- Visibility animation ----
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,16 +48,22 @@ const LocationSection = () => {
       className="relative py-24 px-4 overflow-hidden"
     >
       <div className="max-w-4xl mx-auto">
-        <div className={`glass-card p-8 md:p-12 transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div
+          className={`glass-card p-8 md:p-12 transition-all duration-1000 ${
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
           <div className="flex flex-col md:flex-row items-center gap-8">
+            
             {/* Globe visualization */}
             <div className="relative">
               <div className="w-48 h-48 rounded-full border-2 border-primary/30 relative overflow-hidden">
+
                 {/* Globe grid lines */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Globe2 className="w-32 h-32 text-primary/20 animate-spin-slow" />
                 </div>
-                
+
                 {/* Location pin */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <div className="relative">
@@ -53,8 +78,8 @@ const LocationSection = () => {
                     key={i}
                     className="absolute w-2 h-2 bg-secondary rounded-full"
                     style={{
-                      top: '50%',
-                      left: '50%',
+                      top: "50%",
+                      left: "50%",
                       transform: `rotate(${i * 120}deg) translateX(80px)`,
                       animation: `spin 10s linear infinite`,
                       animationDelay: `${i * 0.5}s`,
@@ -70,16 +95,22 @@ const LocationSection = () => {
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-mono text-primary">Available for Work</span>
               </div>
-              
+
               <h3 className="text-3xl md:text-4xl font-bold mb-2">
                 <span className="neon-text">Hyderabad</span>, India
               </h3>
+
+              {/* Updated Quote */}
               <p className="text-muted-foreground text-lg mb-6">
-                Working remotely with clients worldwide
+                Empowering global teams with intelligent software — anytime, anywhere.
               </p>
 
               {/* Time zone info */}
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                <div className="glass-card px-4 py-2 rounded-lg">
+                  <span className="text-sm text-muted-foreground">Local Time</span>
+                  <p className="font-mono text-primary">{currentTime}</p>
+                </div>
                 <div className="glass-card px-4 py-2 rounded-lg">
                   <span className="text-sm text-muted-foreground">Timezone</span>
                   <p className="font-mono text-primary">IST (UTC+5:30)</p>
@@ -90,6 +121,7 @@ const LocationSection = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -98,3 +130,4 @@ const LocationSection = () => {
 };
 
 export default LocationSection;
+

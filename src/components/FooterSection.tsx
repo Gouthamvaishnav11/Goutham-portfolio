@@ -22,10 +22,23 @@ const FooterSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  // ✅ Correct Social Links
   const socialLinks = [
-    { icon: Github, label: 'GitHub', href: '#' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Mail, label: 'Email', href: 'mailto:contact@gouthamvaishnav.dev' },
+    { 
+      icon: Github, 
+      label: 'GitHub', 
+      href: 'https://github.com/Gouthamvaishnav11' 
+    },
+    { 
+      icon: Linkedin, 
+      label: 'LinkedIn', 
+      href: 'https://www.linkedin.com/in/goutham-vaishnav/' 
+    },
+    { 
+      icon: Mail, 
+      label: 'Email', 
+      href: 'mailto:gouthamvaishnav8@gmail.com' 
+    },
   ];
 
   return (
@@ -40,6 +53,7 @@ const FooterSection = () => {
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
+
         {/* Main CTA */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-8">
@@ -57,9 +71,11 @@ const FooterSection = () => {
             Ready to transform your ideas into reality? Let's connect.
           </p>
 
-          {/* CTA Button */}
+          {/* CTA Button — FIXED */}
           <a 
-            href="mailto:contact@gouthamvaishnav.dev"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=gouthamvaishnav8@gmail.com"
+             target="_blank"
+             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-2xl hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_hsl(var(--neon-cyan)/0.5)] group"
           >
             Get In Touch
@@ -73,6 +89,8 @@ const FooterSection = () => {
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-4 glass-card rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
               aria-label={link.label}
             >
@@ -92,9 +110,10 @@ const FooterSection = () => {
             © {new Date().getFullYear()} All rights reserved
           </p>
         </div>
+
       </div>
 
-      {/* Particle fade effect at bottom */}
+      {/* Particle fade effect */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </footer>
   );

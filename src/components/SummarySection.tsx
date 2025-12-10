@@ -113,9 +113,14 @@ const SummarySection = () => {
         <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <blockquote className="glass-card p-8 inline-block max-w-3xl">
             <p className="text-xl md:text-2xl font-light italic text-muted-foreground">
-              "I develop backend systems using Flask & SQLAlchemy, create AI automations with n8n and ChatGPT, 
-              and deploy scalable solutions using modern DevOps practices."
-            </p>
+              "I build robust backend systems using Flask and SQLAlchemy, design intelligent automation workflows powered by AI agents, and deploy scalable solutions using modern DevOps practices.
+
+Over the past year, I have developed multiple real-world applications—including event management platforms, restaurant systems, AI-powered resume analyzers, and workflow automation tools. Each project reflects a blend of creativity, performance, and engineering excellence.
+
+Driven by curiosity and innovation, I combine software development with AI-driven automation to create systems that don’t just function but think, adapt, and scale intelligently.
+
+My expertise lies in transforming ideas into high-impact, high-performance applications using Python, Flask, automation frameworks, and AI agents—always with a focus on speed, reliability, and security."
+                </p>
           </blockquote>
         </div>
       </div>

@@ -17,6 +17,7 @@ const Navigation = () => {
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Certifications', href: '#certifications' },
     { label: 'Summary', href: '#summary' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -27,7 +28,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between py-3">
           {/* Logo */}
           <a href="#" className="text-xl font-bold neon-text">
-            GV
+            Portfolio
           </a>
 
           {/* Desktop navigation */}

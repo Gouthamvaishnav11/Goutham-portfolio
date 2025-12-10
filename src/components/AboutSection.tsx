@@ -37,7 +37,7 @@ const AboutSection = () => {
     >
       {/* Background elements */}
       <div className="absolute inset-0 circuit-bg" />
-      
+
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Visual element */}
@@ -46,14 +46,20 @@ const AboutSection = () => {
               {/* Glowing ring */}
               <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin-slow" />
               <div className="absolute inset-4 rounded-full border border-secondary/20 animate-spin-slow" style={{ animationDirection: 'reverse' }} />
-              
+
               {/* Center content */}
               <div className="absolute inset-12 glass-card rounded-full flex items-center justify-center neon-border">
-                <div className="text-center">
-                  <div className="text-6xl font-bold neon-text mb-2">GV</div>
-                  <div className="text-sm text-muted-foreground font-mono">Developer</div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src="/image.jpeg" // use your uploaded image
+                    alt="Goutham Vaishnav"
+                    className="w-47 h-48 md:w-60 md:h-64 rounded-full object-cover ring-4 ring-primary"
+                  />
+                  
                 </div>
               </div>
+
+
 
               {/* Floating icons around */}
               {features.map((feature, index) => {
@@ -61,7 +67,7 @@ const AboutSection = () => {
                 const radius = 45;
                 const x = 50 + radius * Math.cos(angle);
                 const y = 50 + radius * Math.sin(angle);
-                
+
                 return (
                   <div
                     key={feature.label}
@@ -92,8 +98,8 @@ const AboutSection = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              I'm from <span className="text-primary font-semibold">Hyderabad, India</span>. I build secure backend systems 
-              with <span className="text-secondary">Flask & SQLAlchemy</span>, intelligent AI automations, and scalable 
+              I'm from <span className="text-primary font-semibold">Hyderabad, India</span>. I build secure backend systems
+              with <span className="text-secondary">Flask & SQLAlchemy</span>, intelligent AI automations, and scalable
               cloud workflows. My passion lies in creating systems that think, adapt, and scale.
             </p>
 
@@ -107,11 +113,11 @@ const AboutSection = () => {
               </div>
               <div className="space-y-2">
                 <p><span className="text-primary">$</span> whoami</p>
-                <p className="text-muted-foreground pl-4">Full-Stack Developer & AI Engineer</p>
+                <p className="text-muted-foreground pl-4">Full-Stack Developer & AI Agents Developer</p>
                 <p><span className="text-primary">$</span> location</p>
                 <p className="text-muted-foreground pl-4">📍 Hyderabad, India</p>
                 <p><span className="text-primary">$</span> current_focus</p>
-                <p className="text-muted-foreground pl-4">AI Automation • Backend Systems • Cloud Architecture</p>
+                <p className="text-muted-foreground pl-4">AI Automation & Agents  • Backend Systems • Cloud Architecture</p>
               </div>
             </div>
           </div>

@@ -84,7 +84,7 @@ const HeroSection = () => {
         {/* Title */}
         <div className={`transition-all duration-700 ${showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-xl md:text-2xl lg:text-3xl font-display font-light text-foreground/90 mb-4">
-            Full-Stack Developer & AI Automation Engineer
+            Full-Stack Developer & AI Agents Developer
           </p>
         </div>
 
@@ -99,7 +99,7 @@ const HeroSection = () => {
         {/* CTA Buttons */}
         <div className={`flex justify-center gap-4 mt-12 transition-all duration-700 delay-500 ${showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <a 
-            href="#about" 
+            href="https://www.linkedin.com/in/goutham-vaishnav/" 
             className="px-8 py-4 glass-card neon-border text-foreground font-medium hover:bg-primary/10 transition-all duration-300 hover:scale-105"
           >
             Explore My Work
