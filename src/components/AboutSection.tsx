@@ -51,7 +51,7 @@ const AboutSection = () => {
               <div className="absolute inset-12 glass-card rounded-full flex items-center justify-center neon-border">
                 <div className="flex flex-col items-center">
                   <img
-                    src="/image.jpeg" // use your uploaded image
+                    src="/images/image.jpeg" // use your uploaded image
                     alt="Goutham Vaishnav"
                     className="w-47 h-48 md:w-60 md:h-64 rounded-full object-cover ring-4 ring-primary"
                   />

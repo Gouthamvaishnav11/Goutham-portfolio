@@ -8,11 +8,11 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
-  { name: 'Codestream Hackathon Winner', issuer: 'NRCM', delay: 100, image: 'backend.png' },
-  { name: 'Backend Development', issuer: 'Sunstone AceAcademy', delay: 300, image: 'backend.png' },
-  { name: 'Version Control', issuer: 'Sunstone AceAcademy', delay: 400, image: 'versioncontrol.png' },
-  { name: 'Walmart USA Advanced Software Engineering Virtual Experience Program', issuer: 'Walmart Forage', delay: 500, image: 'forage.png' },
-  { name: 'Intern Web Development', issuer: 'Acmegrade', delay: 200, image: 'intern.png' },
+  { name: 'Codestream Hackathon Winner', issuer: 'NRCM', delay: 100, image: '/images/backend.png' },
+  { name: 'Backend Development', issuer: 'Sunstone AceAcademy', delay: 300, image: '/images/backend.png' },
+  { name: 'Version Control', issuer: 'Sunstone AceAcademy', delay: 400, image: '/images/versioncontrol.png' },
+  { name: 'Walmart USA Advanced Software Engineering Virtual Experience Program', issuer: 'Walmart Forage', delay: 500, image: '/images/forage.png' },
+  { name: 'Intern Web Development', issuer: 'Acmegrade', delay: 200, image: '/images/intern.png' },
 ];
 
 const CertificationCard = ({ cert, isVisible }: { cert: Certification; isVisible: boolean }) => {
