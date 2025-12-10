@@ -89,5 +89,5 @@ npm install
 ``
 npm run dev
 ```
-link:gouthamvaishnav.netlify.app/ 
+🌐 Live Portfolio: https://lnkd.in/grB62st5
 
