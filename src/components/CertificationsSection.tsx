@@ -8,11 +8,16 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
-  { name: 'Codestream Hackathon Winner', issuer: 'NRCM', delay: 100, image: '/images/backend.png' },
+  { name: 'Codestream Hackathon Winner', issuer: 'NRCM', delay: 100, image: '/images/c.png' },
   { name: 'Backend Development', issuer: 'Sunstone AceAcademy', delay: 300, image: '/images/backend.png' },
   { name: 'Version Control', issuer: 'Sunstone AceAcademy', delay: 400, image: '/images/versioncontrol.png' },
+  { name: 'Linkedin Marketing', issuer: 'Sunstone AceAcademy', delay: 400, image: '/images/linkedin.png' },
+  { name: 'Python ', issuer: 'Infosy', delay: 400, image: '/images/python.png' },
   { name: 'Walmart USA Advanced Software Engineering Virtual Experience Program', issuer: 'Walmart Forage', delay: 500, image: '/images/forage.png' },
+  { name: 'young trucks ', issuer: 'naukri', delay: 400, image: '/images/young turcks.jpeg' },
+  { name: 'Tech competion', issuer: 'Sunstone', delay: 400, image: '/images/tech sunstone.png' },
   { name: 'Intern Web Development', issuer: 'Acmegrade', delay: 200, image: '/images/intern.png' },
+
 ];
 
 const CertificationCard = ({ cert, isVisible }: { cert: Certification; isVisible: boolean }) => {
@@ -26,7 +31,7 @@ const CertificationCard = ({ cert, isVisible }: { cert: Certification; isVisible
       onClick={() => setIsZoomed(!isZoomed)}
     >
       {cert.image && (
-        <div className="relative w-70 h-70">
+        <div className="relative w-60 h-45 flex items-center justify-center bg-white rounded-xl">
           {/* Stacked squares effect */}
           <div className="absolute top-4 left-3 w-full h-full bg-black/20 rounded-md rotate-2" />
           <div className="absolute -top-4 -left-3 w-full h-full bg-black/40 rounded-md rotate-1" />
@@ -82,11 +87,18 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {certifications.map((cert) => (
-            <CertificationCard key={cert.name} cert={cert} isVisible={isVisible} />
-          ))}
+        <div className="relative w-full overflow-hidden">
+          <div className="animate-marquee gap-6">
+            {[...certifications, ...certifications].map((cert, index) => (
+              <CertificationCard
+                key={`${cert.name}-${index}`}
+                cert={cert}
+                isVisible={isVisible}
+              />
+            ))}
+          </div>
         </div>
+
 
         {/* Bottom CTA */}
         <div

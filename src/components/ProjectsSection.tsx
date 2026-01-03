@@ -58,14 +58,15 @@ const projects: Project[] = [
     github: "https://github.com/Gouthamvaishnav11/Restaurant-management-system",
   },
   {
-    title: 'GitHub Projects',
-    description: 'DSA, DevOps automation, full-stack apps, and clean architectures.',
-    icon: Code,
-    tags: ['DSA', 'DevOps', 'C++', 'Clean Code'],
-    color: 'from-secondary to-primary',
-    delay: 500,
-    github: "https://github.com/Gouthamvaishnav11",
-  },
+  title: 'RepoLens',
+  description: 'AI-powered system that evaluates GitHub repositories using code analysis, Git practices, documentation quality, and LLM-based reviews.',
+  icon: Code,
+  tags: ['AI', 'GitHub Analysis', 'Python', 'LLMs', 'Clean Architecture'],
+  color: 'from-secondary to-primary',
+  delay: 500,
+  github: 'https://github.com/Gouthamvaishnav11/RepoLens',
+}
+
 ];
 
 const ProjectCard = ({ project, isVisible }: { project: Project; isVisible: boolean }) => {
@@ -172,7 +173,7 @@ const ProjectsSection = () => {
         </div>
 
         <div className={`mt-12 flex flex-wrap justify-center gap-3 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {['Flask Backend', 'SQLAlchemy', 'AI Agents', 'DevOps', 'Scalable APIs', 'Clean Code', 'APIs', 'AI Tools'].map((tag) => (
+          {['Flask Backend', 'SQLAlchemy', 'AI Agents', 'Scalable APIs', 'Clean Code', 'APIs', 'AI Tools','LLM','Docker','Jenkins','Linux ','Shell Scripting'].map((tag) => (
             <span key={tag} className="px-4 py-2 glass-card rounded-full text-sm font-mono text-primary border border-primary/30">
               {tag}
             </span>
