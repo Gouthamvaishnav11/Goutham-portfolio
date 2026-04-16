@@ -18,6 +18,8 @@ const certifications: Certification[] = [
   { name: 'Tech competion', issuer: 'Sunstone', delay: 400, image: '/images/tech sunstone.png' },
   { name: 'Intern Web Development', issuer: 'Acmegrade', delay: 200, image: '/images/intern.png' },
   { name: 'MAIIH', issuer: 'Microsoft AI Innovators Hub', delay: 200, image: '/images/MAIIH.jpeg' },
+  { name: 'Naukri prompt Engineering', issuer: 'naukri campus ', delay: 200, image: '/images/prompt.png' },
+
 
 
 ];

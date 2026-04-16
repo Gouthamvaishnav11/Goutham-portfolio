@@ -1,168 +1,126 @@
 import { useEffect, useRef, useState } from 'react';
-import { 
-  Code, Database, Cloud, Terminal, GitBranch, 
-  Brain, Workflow, Server, Container, Shield,
-  Globe, Cpu
-} from 'lucide-react';
+import cssLogo from '/images/css.png';
+import vscodelogo from '/images/vscode.png';
 
-interface Skill {
-  name: string;
-  icon: React.ElementType;
-}
 
-interface SkillCategory {
-  title: string;
-  color: string;
-  skills: Skill[];
-}
+const allSkills = [
+  { name: 'HTML', src: 'https://cdn.simpleicons.org/html5', color: '#E34F26' },
+  { name: 'CSS', src: cssLogo, color: '#1572B6' },
+  { name: 'JavaScript', src: 'https://cdn.simpleicons.org/javascript', color: '#F7DF1E' },
+  { name: 'React', src: 'https://cdn.simpleicons.org/react', color: '#61DAFB' },
+  { name: 'Flask', src: 'https://cdn.simpleicons.org/flask/ffffff', color: '#000000' },
+  { name: 'Python', src: 'https://cdn.simpleicons.org/python', color: '#3776AB' },
 
+  { name: 'Docker', src: 'https://cdn.simpleicons.org/docker', color: '#2496ED' },
+  { name: 'Git', src: 'https://cdn.simpleicons.org/git', color: '#F05032' },
+  { name: 'GitHub', src: 'https://cdn.simpleicons.org/github/ffffff', color: '#181717' },
+  { name: 'MongoDB', src: 'https://cdn.simpleicons.org/mongodb', color: '#47A248' },
+  { name: 'MySQL', src: 'https://cdn.simpleicons.org/mysql', color: '#4479A1' },
+
+  { name: 'Postman', src: 'https://cdn.simpleicons.org/postman', color: '#FF6C37' },
+  { name: 'Firebase', src: 'https://cdn.simpleicons.org/firebase', color: '#FFCA28' },
+  { name: 'Linux', src: 'https://cdn.simpleicons.org/linux', color: '#FCC624' },
+  { name: 'VS Code', src: vscodelogo, color: '#007ACC' },
+];
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setIsVisible(true);
+    }, { threshold: 0.1 });
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const skillCategories: SkillCategory[] = [
-    {
-      title: 'Backend',
-      color: 'primary',
-      skills: [
-        { name: 'Flask', icon: Server },
-        { name: 'SQLAlchemy', icon: Database },
-        { name: 'REST APIs', icon: Globe },
-      ],
-    },
-    {
-      title: 'AI & Automation',
-      color: 'secondary',
-      skills: [
-        { name: 'ChatGPT', icon: Brain },
-        { name: 'n8n', icon: Workflow },
-        { name: 'Omnidim.io', icon: Cpu },
-      ],
-    },
-    {
-      title: 'DevOps',
-      color: 'primary',
-      skills: [
-        { name: 'Docker', icon: Container },
-        { name: 'CI/CD', icon: Shield },
-        { name: 'Linux', icon: Terminal },
-        { name: 'Cloud', icon: Cloud },
-      ],
-    },
-    {
-      title: 'Programming',
-      color: 'secondary',
-      skills: [
-        { name: 'Python', icon: Code },
-        { name: 'C/C++', icon: Terminal },
-        { name: 'DSA', icon: Cpu },
-      ],
-    },
-    {
-      title: 'Web',
-      color: 'primary',
-      skills: [
-        { name: 'HTML', icon: Code },
-        { name: 'CSS', icon: Code },
-        { name: 'JavaScript', icon: Code },
-      ],
-    },
-    {
-      title: 'Version Control',
-      color: 'secondary',
-      skills: [
-        { name: 'Git', icon: GitBranch },
-        { name: 'GitHub', icon: GitBranch },
-      ],
-    },
-  ];
+  // cursor tracking for subtle parallax
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 .. 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 .. 0.5
+      setMouse({ x, y });
+    };
+
+    el.addEventListener('mousemove', handleMove);
+    return () => el.removeEventListener('mousemove', handleMove);
+  }, []);
+
+  // Reverse pyramid rows: 5,4,3,2,1
+  const rows = [5, 4, 3, 2, 1];
+  let index = 0;
 
   return (
-    <section
-      id="skills"
-      ref={sectionRef}
-      className="relative py-32 px-4 overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/5 to-transparent" />
-      
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-mono text-primary">Skills & Technologies</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technical <span className="neon-text">Expertise</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit for building intelligent, scalable solutions
-          </p>
-        </div>
+    <section ref={sectionRef} className="relative py-24 px-4 overflow-hidden">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          Tech <span className="text-primary">Stack</span>
+        </h2>
+        <p className="text-muted-foreground mb-8 text-sm">
+          Modern tools & technologies I use
+        </p>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={category.title}
-              className={`glass-card p-6 transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(var(--neon-cyan)/0.2)] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: `${categoryIndex * 100}ms` }}
-            >
-              <h3 className={`text-lg font-semibold mb-4 ${category.color === 'primary' ? 'text-primary' : 'text-secondary'}`}>
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skill.name}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/50 border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group`}
-                    style={{ animationDelay: `${(categoryIndex * 100) + (skillIndex * 50)}ms` }}
-                  >
-                    <skill.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-sm font-medium">{skill.name}</span>
-                  </div>
-                ))}
+        <div ref={containerRef} className="flex flex-col items-center gap-6">
+          {rows.map((count, rowIndex) => {
+            const items = allSkills.slice(index, index + count);
+            index += count;
+
+            return (
+              <div
+                key={rowIndex}
+                className={`flex justify-center gap-7 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${rowIndex * 100}ms` }}
+              >
+                {items.map((skill, i) => {
+                  // parallax + floating
+                  const depth = (rowIndex + 1) * 2; // deeper rows move slightly more
+                  const tx = mouse.x * depth * 6; // px
+                  const ty = mouse.y * depth * 6; // px
+
+                  return (
+                    <div
+                      key={i}
+                      className="group relative p-6 rounded-xl border border-border/30 transition-all duration-300 hover:scale-110"
+                      style={{
+                        background: `${skill.color}12`,
+                        boxShadow: `0 0 10px ${skill.color}55`,
+                        transform: `translate(${tx}px, ${ty}px)`,
+                        animation: `float ${3 + (i % 3)}s ease-in-out ${i * 0.1}s infinite`
+                      }}
+                    >
+                      {/* Tooltip */}
+                      <div className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition text-[10px] bg-black/80 px-2 py-1 rounded">
+                        {skill.name}
+                      </div>
+
+                      <img
+                        src={skill.src}
+                        alt={skill.name}
+                        className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-125"
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Problem Solving highlight */}
-        <div className={`mt-12 glass-card p-8 neon-border transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20">
-              <Brain className="w-12 h-12 text-primary neon-glow" />
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">Problem-Solving Excellence</h3>
-              <p className="text-muted-foreground">
-                Strong foundation in Data Structures & Algorithms using C++, delivering clean, 
-                scalable, and efficient solutions to complex technical challenges.
-              </p>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
+
+      {/* floating keyframes */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+        }
+      `}</style>
     </section>
   );
 };

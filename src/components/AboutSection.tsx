@@ -3,7 +3,7 @@ import { Terminal, Server, Brain, Cloud } from 'lucide-react';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,33 +35,46 @@ const AboutSection = () => {
       ref={sectionRef}
       className="relative py-32 px-4 overflow-hidden"
     >
-      {/* Background elements */}
+      {/* Background (UNCHANGED) */}
       <div className="absolute inset-0 circuit-bg" />
 
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Visual element */}
+
+          {/* LEFT SIDE */}
           <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Glowing ring */}
+
+              {/* Rings */}
               <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin-slow" />
               <div className="absolute inset-4 rounded-full border border-secondary/20 animate-spin-slow" style={{ animationDirection: 'reverse' }} />
 
-              {/* Center content */}
-              <div className="absolute inset-12 glass-card rounded-full flex items-center justify-center neon-border">
-                <div className="flex flex-col items-center">
-                  <img
-                    src="/images/image.jpeg" // use your uploaded image
-                    alt="Goutham Vaishnav"
-                    className="w-47 h-48 md:w-60 md:h-64 rounded-full object-cover ring-4 ring-primary"
-                  />
-                  
+              {/* 🔥 FLIP IMAGE */}
+              <div className="absolute inset-12 flex items-center justify-center">
+                <div className="flip-container w-[300px] h-[300px] md:w-[360px] md:h-[360px]">
+                
+                  <div className="flip-card">
+
+                    {/* Front (default) */}
+                    <div className="flip-front glass-card neon-border">
+                      <span className="text-primary font-mono text-sm opacity-70">
+                        Hover to Reveal
+                      </span>
+                    </div>
+
+                    {/* Back (image) */}
+                    <div className="flip-back">
+                      <img
+                        src="/images/image.jpeg"
+                        alt="Goutham Vaishnav"
+                        className="w-[300px] h-[300px] md:w-[360px] md:h-[360px] rounded-full object-cover ring-6 ring-primary"
+                      />
+                    </div>
+
+                  </div>
                 </div>
               </div>
-
-
-
-              {/* Floating icons around */}
+              {/* Floating Icons */}
               {features.map((feature, index) => {
                 const angle = (index * 90) * (Math.PI / 180);
                 const radius = 45;
@@ -83,11 +96,13 @@ const AboutSection = () => {
                   </div>
                 );
               })}
+
             </div>
           </div>
 
-          {/* Right side - Content */}
+          {/* RIGHT SIDE */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+
             <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               <span className="text-sm font-mono text-primary">About Me</span>
@@ -100,10 +115,10 @@ const AboutSection = () => {
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               I'm from <span className="text-primary font-semibold">Hyderabad, India</span>. I build secure backend systems
               with <span className="text-secondary">Flask & SQLAlchemy</span>, intelligent AI automations, and scalable
-              cloud workflows. My passion lies in creating systems that think, adapt, and scale.
+              cloud workflows.
             </p>
 
-            {/* Terminal-style info box */}
+            {/* Terminal Box */}
             <div className="glass-card p-6 font-mono text-sm">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-3 h-3 rounded-full bg-destructive/80" />
@@ -111,15 +126,21 @@ const AboutSection = () => {
                 <span className="w-3 h-3 rounded-full bg-green-500/80" />
                 <span className="ml-4 text-muted-foreground">terminal</span>
               </div>
+
               <div className="space-y-2">
                 <p><span className="text-primary">$</span> whoami</p>
                 <p className="text-muted-foreground pl-4">Full-Stack Developer & AI Agents Developer</p>
+
                 <p><span className="text-primary">$</span> location</p>
                 <p className="text-muted-foreground pl-4">📍 Hyderabad, India</p>
+
                 <p><span className="text-primary">$</span> current_focus</p>
-                <p className="text-muted-foreground pl-4">AI Automation & Agents  • Backend Systems • Cloud Architecture</p>
+                <p className="text-muted-foreground pl-4">
+                  AI Automation & Agents • Backend Systems • Cloud Architecture
+                </p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
