@@ -65,7 +65,9 @@ Glowing borders
 
 Real-world applications, including:
 
-Event Management System
+Aleria
+
+Repolens
 
 Restaurant Ordering System
 
